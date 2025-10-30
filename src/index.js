@@ -17,10 +17,10 @@
 // console.log(pathToFile);
 // C:\\\\коренева_папка\\\\some_folder\\\\some_file.txt
 
-import path from 'node:path';
+// import path from 'node:path';
 
 // Windows
-console.log(path.parse('C:\\\\path\\\\dir\\\\file.txt'));
+// console.log(path.parse('C:\\\\path\\\\dir\\\\file.txt'));
 /*
 {
   root: 'C:\\\\',
@@ -30,3 +30,15 @@ console.log(path.parse('C:\\\\path\\\\dir\\\\file.txt'));
   name: 'file'
 }
 */
+import fs from 'node:fs';
+
+// приклад без кодування
+const buffer = fs.readFileSync('./src/file.txt');
+console.log(buffer); // <Buffer 48 65 6c 6c 6f ...>
+
+// приклад із кодуванням
+const data = fs.readFileSync('./src/file.txt', 'utf8');
+console.log('Вміст файлу:', data); // "Hello"
+// import fs from 'node:fs';
+
+// fs.writeFileSync('output.txt', 'Привіт з Node.js!', 'utf8');
