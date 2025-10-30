@@ -30,15 +30,26 @@
   name: 'file'
 }
 */
-import fs from 'node:fs';
-
-// приклад без кодування
-const buffer = fs.readFileSync('./src/file.txt');
-console.log(buffer); // <Buffer 48 65 6c 6c 6f ...>
-
-// приклад із кодуванням
-const data = fs.readFileSync('./src/file.txt', 'utf8');
-console.log('Вміст файлу:', data); // "Hello"
 // import fs from 'node:fs';
 
-// fs.writeFileSync('output.txt', 'Привіт з Node.js!', 'utf8');
+// приклад без кодування
+// const buffer = fs.readFileSync('./src/file.txt');
+// console.log(buffer); // <Buffer 48 65 6c 6c 6f ...>
+
+// приклад із кодуванням
+// const data = fs.readFileSync('./src/file.txt', 'utf8');
+// console.log('Вміст файлу:', data); // "Hello"
+// import fs from 'node:fs';
+
+// import fs from 'node:fs/promises';
+
+// без кодування
+// const buffer = await fs.readFile('./src/file.txt');
+// console.log(buffer); // <Buffer ... >
+
+// з кодуванням
+// const data = await fs.readFile('./src/file.txt', 'utf8');
+// console.log('Вміст файлу:', data); // "Hello"
+import fs from 'node:fs';
+
+fs.writeFileSync('output.txt', 'Привіт з Node.js!', 'utf8');
