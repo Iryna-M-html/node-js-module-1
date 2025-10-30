@@ -66,7 +66,16 @@
 // await fs.rename('oldfile.txt', 'newfile.txt');
 // console.log('Файл успішно перейменовано.');
 
+// import fs from 'node:fs/promises';
+
+// await fs.unlink('output.txt');
+// console.log('Файл успішно видалено.');
 import fs from 'node:fs/promises';
 
-await fs.unlink('output.txt');
-console.log('Файл успішно видалено.');
+const buffer1 = await fs.readFile('./src/hello.txt');
+// якщо у файлі hello.txt був текст "Hello World!"
+
+console.log(buffer1);
+// <Buffer 48 65 6c 6c 6f 20 57 6f 72 6c 64 21>
+const buffer = await fs.readFile('./src/hello.txt');
+console.log(buffer.toString('utf-8')); // Hello World!
