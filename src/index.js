@@ -50,6 +50,23 @@
 // з кодуванням
 // const data = await fs.readFile('./src/file.txt', 'utf8');
 // console.log('Вміст файлу:', data); // "Hello"
-import fs from 'node:fs';
+// import fs from 'node:fs';
 
-fs.writeFileSync('output.txt', 'Привіт з Node.js!', 'utf8');
+// fs.writeFileSync('output.txt', 'Привіт з Node.js!', 'utf8');
+// import fs from 'node:fs/promises';
+
+// await fs.writeFile('output.txt', 'Привіт з Node.js!', 'utf8');
+// console.log('Дані успішно записані у файл.');
+// import fs from 'node:fs/promises';
+
+// await fs.appendFile('output.txt', '\\nЩе один рядок', 'utf8');
+// console.log('Дані успішно додані у файл.');
+// import fs from 'node:fs/promises';
+
+// await fs.rename('oldfile.txt', 'newfile.txt');
+// console.log('Файл успішно перейменовано.');
+
+import fs from 'node:fs/promises';
+
+await fs.unlink('output.txt');
+console.log('Файл успішно видалено.');
