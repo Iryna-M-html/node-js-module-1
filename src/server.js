@@ -4,12 +4,17 @@ import express from 'express';
 const app = express();
 const PORT = 3000;
 
-// Перший маршрут
-app.get('/', (req, res) => {
-  res.status(200).json({ message: 'Hello world!' });
+// Логування часу
+app.use((req, res, next) => {
+  console.log(`Time: ${new Date().toLocaleString()}`);
+  next();
 });
 
-// Запуск сервера
+// Маршрут
+app.get('/', (req, res) => {
+  res.status(200).json({ message: 'Hello, World!' });
+});
+
 app.listen(PORT, () => {
   console.log(`Server is running on port ${PORT}`);
 });
