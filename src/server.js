@@ -10,7 +10,7 @@ app.use((req, res, next) => {
   next();
 });
 
-// Маршрут
+// Кореневий маршрут
 app.get('/', (req, res) => {
   res.status(200).json({ message: 'Hello, World!' });
 });
@@ -21,7 +21,12 @@ app.get('/test-error', (req, res) => {
   throw new Error('Something went wrong');
 });
 
-// Middleware для обробки помилок
+// Middleware 404 (після всіх маршрутів)
+app.use((req, res) => {
+  res.status(404).json({ message: 'Route not found' });
+});
+
+// Middleware для обробки помилок (останнє)
 app.use((err, req, res, next) => {
   console.error('Error:', err.message);
   res.status(500).json({
