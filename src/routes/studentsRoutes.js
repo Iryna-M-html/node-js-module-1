@@ -2,7 +2,8 @@ import { Router } from 'express';
 import {
   createStudent,
   deleteStudent,
-  getAllStudents,
+  // getAllStudents,
+  getStudents,
   getStudentById,
   updateStudent,
 } from '../controllers/studentsController.js';
@@ -16,7 +17,7 @@ import { celebrate } from 'celebrate';
 
 const router = Router();
 
-router.get('/students', getAllStudents);
+router.get('/students', getStudents);
 
 router.get(
   '/students/:studentId',
