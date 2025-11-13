@@ -37,6 +37,7 @@ export const createStudentSchema = {
     onDuty: Joi.boolean().messages({
       'boolean.base': 'onDuty must be a boolean value',
     }),
+    search: Joi.string().trim().allow(''),
   }),
 };
 
