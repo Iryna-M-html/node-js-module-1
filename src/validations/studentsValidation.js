@@ -38,6 +38,8 @@ export const createStudentSchema = {
       'boolean.base': 'onDuty must be a boolean value',
     }),
     search: Joi.string().trim().allow(''),
+    sortBy: Joi.string().valid('_id', 'name', 'age', 'avgMark').default('_id'),
+    sortOrder: Joi.string().valid('asc', 'desc').default('asc'),
   }),
 };
 

@@ -8,7 +8,15 @@ import { Student } from '../models/student.js';
 
 export const getStudents = async (req, res) => {
   // Отримуємо пара метри пагінації
-  const { page = 1, perPage = 10, gender, minAvgMark, search } = req.query;
+  const {
+    page = 1,
+    perPage = 10,
+    gender,
+    minAvgMark,
+    search,
+    sortBy = '_id',
+    sortOrder = 'asc',
+  } = req.query;
 
   const skip = (page - 1) * perPage;
 
@@ -28,10 +36,14 @@ export const getStudents = async (req, res) => {
   // Виконуємо одразу два запити паралельно
   const [totalItems, students] = await Promise.all([
     studentsQuery.clone().countDocuments(),
-    studentsQuery.skip(skip).limit(perPage),
+    studentsQuery
+      .skip(skip)
+      .limit(perPage)
+      .sort({ [sortBy]: sortOrder }),
+    ,
   ]);
 
-  // Обчислюємо загальну кількість «сторінок»
+  // пагинация+сортировка
   const totalPages = Math.ceil(totalItems / perPage);
 
   res.status(200).json({
