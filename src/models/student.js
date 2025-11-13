@@ -1,6 +1,7 @@
 // src/models/student.js
 
 import { Schema, model } from 'mongoose';
+import { Student } from './models/student.js';
 
 const studentSchema = new Schema(
   {
@@ -34,3 +35,4 @@ const studentSchema = new Schema(
 );
 console.log(studentSchema);
 export const Student = model('Student', studentSchema);
+console.log(Student);
