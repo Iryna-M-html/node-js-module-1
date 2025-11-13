@@ -1,38 +1,16 @@
-// src/models/student.js
+import mongoose from 'mongoose';
 
-import { Schema, model } from 'mongoose';
-import { Student } from './models/student.js';
-
-const studentSchema = new Schema(
+const studentSchema = new mongoose.Schema(
   {
-    name: {
-      type: String,
-      required: true,
-      trim: true, // прибирає пробіли на початку та в кінці
-    },
-    age: {
-      type: Number,
-      required: true,
-    },
-    gender: {
-      type: String,
-      required: true,
-      enum: ['male', 'female', 'other'],
-    },
-    avgMark: {
-      type: Number,
-      required: true,
-    },
-    onDuty: {
-      type: Boolean,
-      default: false,
-    },
+    name: { type: String, required: true },
+    age: { type: Number, required: true },
+    onDuty: { type: Boolean, default: false },
+    avgMark: { type: Number, required: true },
+    gender: { type: String, enum: ['male', 'female', 'other'], required: true },
   },
   {
     timestamps: true,
-    versionKey: false,
   },
 );
-console.log(studentSchema);
-export const Student = model('Student', studentSchema);
-console.log(Student);
+
+export const Student = mongoose.model('Student', studentSchema);
