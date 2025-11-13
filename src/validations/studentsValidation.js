@@ -10,10 +10,6 @@ const objectIdValidator = (value, helpers) => {
   return value;
 };
 
-// src/validations/studentsValidation.js
-
-// import { Joi, Segments } from 'celebrate';
-
 export const createStudentSchema = {
   [Segments.BODY]: Joi.object({
     name: Joi.string().min(3).max(30).required().messages({

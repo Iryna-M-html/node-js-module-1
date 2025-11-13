@@ -1,5 +1,6 @@
 import express from 'express';
 import cors from 'cors';
+import { errors } from 'celebrate';
 import helmet from 'helmet';
 import 'dotenv/config';
 import { connectMongoDB } from './db/connectMongoDB.js';
@@ -15,8 +16,11 @@ app.use(helmet());
 app.use(express.json());
 
 app.use(studentsRoutes);
-
+// обробка 404
 app.use(notFoundHandler);
+// обробка помилок від celebrate (валідація)
+app.use(errors());
+// глобальна обробка інших помилок
 app.use(errorHandler);
 
 await connectMongoDB();
